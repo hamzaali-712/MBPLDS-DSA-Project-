@@ -11,11 +11,14 @@ private:
     User* users[MAX_USERS];
     int userCount;
 
+    bool isValidPassword(const std::string& pwd);
+
 public:
     UserManager();
     ~UserManager();
 
     bool addUser(const std::string& username, int userID, const std::string& pwd);
+    bool deleteUser(int userID);
     User* searchUser(int userID);
     bool updatePassword(int userID, const std::string& newPwd);
     void displayAllUsers() const;
