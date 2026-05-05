@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
             leakDB.insert(HashUtils::generateSHA256("password"));
         }
 
-        bool isWeak = weakPasswords.search(password);
+        bool isWeak = weakPasswords.containsPattern(password);
         std::string hash = HashUtils::generateSHA256(password);
         
         // Check leak using the hash
