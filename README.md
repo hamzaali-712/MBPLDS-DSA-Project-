@@ -8,7 +8,7 @@
 ## 📌 Project Overview
 The **Memory-Based Password Leak Detection System (MBPLDS)** is a high-performance cybersecurity application designed to intelligently manage users, evaluate password strength, prevent password reuse, and identify high-risk accounts in real-time. 
 
-Developed by **HAMZA ALI**, this project bridges a **lightning-fast C++ Data Structures backend** with a **modern Streamlit web frontend**, utilizing the Groq AI API (`llama-3.1-8b-instant`) to generate personalized, actionable security reports.
+Developed by a dedicated team, this project bridges a **lightning-fast C++ Data Structures backend** with a **modern Streamlit web frontend**, utilizing the Groq AI API (`llama-3.1-8b-instant`) to generate personalized, actionable security reports.
 
 ## ✨ Core Features & Data Structures
 
@@ -93,7 +93,15 @@ This project is optimized for deployment on the Streamlit Community Cloud.
 3. Add your `GROQ_API_KEY` to the **Secrets** in Streamlit Advanced Settings.
 4. Deploy! The cloud environment uses `packages.txt` to install `g++` and executes `build.sh` to compile the C++ engine before booting the Python UI.
 
+## 👥 Team & Contributions
+
+This project was developed collaboratively by students of **COMSATS University Islamabad, Wah Campus**:
+
+- **Hamza Ali (Team Lead):** AI Integration, Deployment, and Remaining Backend.
+- **Adnan Shah:** UI/UX Design and Module Testing.
+- **Farukh Mumtaz:** Hashing Documentation, System Testing, and Bug Fixing.
+
 ---
 <div align="center">
-  <i>Developed for the Data Structures & System Design Semester Project.</i>
+  <i>DSA PROJECT 4TH SEMESTER</i>
 </div>
