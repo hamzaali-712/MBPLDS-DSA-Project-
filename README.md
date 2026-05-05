@@ -99,7 +99,7 @@ This project was developed collaboratively by students of **COMSATS University I
 
 - **Hamza Ali (Team Lead):** AI Integration, Deployment, and Remaining Backend.
 - **Adnan Shah:** UI/UX Design and Module Testing.
-- **Farukh Mumtaz:** Hashing Documentation, System Testing, and Bug Fixing.
+- **Farukh Mumtaz:** Hashing ,Documentation, System Testing, and Bug Fixing.
 
 ---
 <div align="center">
