@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# C++ Build Files
+*.exe
+*.o
+*.obj
+*.out
+mbplds
+build_test*
+main.exe
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Environment Variables
+.env
+
+# MacOS
+.DS_Store
+
+# Streamlit
+.streamlit/

@@ -1,11 +1,11 @@
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
+#ifndef LEAKHASHTABLE_H
+#define LEAKHASHTABLE_H
 
 #include <string>
 #include <vector>
 #include <list>
 
-class HashTable {
+class LeakHashTable {
 private:
     static const int TABLE_SIZE = 100;
     std::list<std::string> table[TABLE_SIZE];

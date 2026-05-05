@@ -4,11 +4,11 @@
 User::User(const std::string& uname, int id, const std::string& pwd) {
     username = uname;
     userID = id;
-    currentPassword = new Password(pwd);
+    currentPassword = new PasswordRecord(pwd);
     riskLevel = 0;
     
     // Initialize Farukh's modules
-    undoStack = new UndoStack();
+    undoStack = new PasswordHistoryStack();
     historyHead = nullptr;
     historyTail = nullptr;
 }
@@ -28,7 +28,7 @@ User::~User() {
 
 std::string User::getUsername() const { return username; }
 int User::getUserID() const { return userID; }
-Password* User::getCurrentPassword() const { return currentPassword; }
+PasswordRecord* User::getCurrentPassword() const { return currentPassword; }
 int User::getRiskLevel() const { return riskLevel; }
 
 void User::setUsername(const std::string& uname) { username = uname; }
@@ -42,7 +42,7 @@ void User::setPassword(const std::string& newPwd) {
 
     // 3. Update current password
     delete currentPassword;
-    currentPassword = new Password(newPwd);
+    currentPassword = new PasswordRecord(newPwd);
 }
 
 void User::setRiskLevel(int risk) { riskLevel = risk; }
@@ -51,7 +51,7 @@ void User::undoPassword() {
     std::string oldPwd = undoStack->pop();
     if (!oldPwd.empty()) {
         delete currentPassword;
-        currentPassword = new Password(oldPwd);
+        currentPassword = new PasswordRecord(oldPwd);
         std::cout << "Undo successful! Restored previous password.\n";
     } else {
         std::cout << "No more passwords in undo history.\n";

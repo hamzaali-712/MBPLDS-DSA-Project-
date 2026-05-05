@@ -1,8 +1,8 @@
 #ifndef USER_H
 #define USER_H
 
-#include "../PASSWORD/Password.h"
-#include "../PASSWORD/Stack.h"
+#include "PasswordRecord.h"
+#include "PasswordHistory.h"
 #include <string>
 #include <vector>
 
@@ -18,11 +18,11 @@ class User {
 private:
     std::string username;
     int userID;
-    Password* currentPassword;
+    PasswordRecord* currentPassword;
     int riskLevel;
 
     // Farukh's Modules (Replacing void* with actual structures)
-    UndoStack* undoStack;          // For $O(1)$ Undo operations
+    PasswordHistoryStack* undoStack;          // For $O(1)$ Undo operations
     PasswordNode* historyHead;     // Head of Doubly Linked List for history
     PasswordNode* historyTail;     // Tail for quick access
 
@@ -33,7 +33,7 @@ public:
     // Getters
     std::string getUsername() const;
     int getUserID() const;
-    Password* getCurrentPassword() const;
+    PasswordRecord* getCurrentPassword() const;
     int getRiskLevel() const;
 
     // Setters & Logic

@@ -1,11 +1,11 @@
-#ifndef RISKQUEUE_H
-#define RISKQUEUE_H
+#ifndef RISKMAXHEAP_H
+#define RISKMAXHEAP_H
 
-#include "../USER/User.h"
+#include "../core/User.h"
 #include <vector>
 #include <algorithm>
 
-class RiskQueue {
+class RiskMaxHeap {
 private:
     std::vector<User*> heap;
 
