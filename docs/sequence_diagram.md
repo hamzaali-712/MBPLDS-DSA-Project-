@@ -1,29 +1,30 @@
-# Password Update Sequence Diagram
+# System Interaction Sequence Diagram
 
 ```mermaid
 sequenceDiagram
-    actor Admin
-    participant UM as UserManager
-    participant BST as UserBST
-    participant PE as PasswordEngine
+    actor User
+    participant GUI as Streamlit Dashboard
+    participant CPP as C++ Engine (mbplds.exe)
+    participant HU as HashUtils (SHA-256)
     participant HT as LeakHashTable
     participant WT as WeakPasswordTrie
-    participant RMH as RiskMaxHeap
-    participant DBM as DatabaseManager
+    participant AI as Groq API (llama-3.1-8b-instant)
 
-    Admin->>UM: updatePassword(user, newPwd)
-    UM->>BST: search(username)
-    BST-->>UM: return User*
-    UM->>PE: hashPassword(newPwd)
-    PE->>HT: isLeaked(hash)
-    HT-->>PE: true/false
-    PE->>WT: isWeak(newPwd)
-    WT-->>PE: true/false
-    PE-->>UM: return PasswordRecord
-    UM->>User: history.push(currentPwd)
-    UM->>User: set currentPwd = newRecord
-    UM->>RMH: updateScore(username, newScore)
-    UM->>DBM: updateUser(user)
-    DBM-->>UM: success
-    UM-->>Admin: return success
+    User->>GUI: Enter Password & Click Analyze
+    GUI->>CPP: subprocess.run(["./mbplds", "--analyze", pwd])
+    CPP->>HU: generateSHA256(pwd)
+    HU-->>CPP: return real_hash
+    CPP->>HT: load from leaked_hashes.txt
+    CPP->>HT: isLeaked(real_hash)
+    HT-->>CPP: return boolean
+    CPP->>WT: load from weak_passwords.txt
+    CPP->>WT: containsPattern(pwd)
+    WT-->>CPP: return boolean
+    CPP-->>GUI: return JSON {hash, isWeak, isLeaked, entropy, crackTime}
+    GUI-->>User: Display Security Status & Charts
+    
+    User->>GUI: Click "Check AI Security Report"
+    GUI->>AI: Send system output to Groq LLM
+    AI-->>GUI: Return Markdown Report
+    GUI-->>User: Display AI Insights & Recommendations
 ```
