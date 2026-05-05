@@ -4,6 +4,7 @@
 #include "datastructures/LeakHashTable.h"
 #include "engine/HashUtils.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 
 int main(int argc, char* argv[]) {
@@ -11,22 +12,47 @@ int main(int argc, char* argv[]) {
     if (argc == 3 && std::string(argv[1]) == "--analyze") {
         std::string password = argv[2];
         
-        // Setup mock DBs quickly for analysis
+        // Load weak passwords
         WeakPasswordTrie weakPasswords;
-        weakPasswords.insert("password");
-        weakPasswords.insert("admin");
-        weakPasswords.insert("qwerty");
-        weakPasswords.insert("123456");
+        std::ifstream weakFile("data/weak_passwords.txt");
+        if (weakFile.is_open()) {
+            std::string line;
+            while (std::getline(weakFile, line)) {
+                if (!line.empty()) {
+                    if (line.back() == '\r') line.pop_back();
+                    weakPasswords.insert(line);
+                }
+            }
+            weakFile.close();
+        } else {
+            weakPasswords.insert("password");
+            weakPasswords.insert("admin");
+            weakPasswords.insert("qwerty");
+            weakPasswords.insert("123456");
+        }
 
+        // Load leaked hashes
         LeakHashTable leakDB;
-        leakDB.insert("123456");
-        leakDB.insert("password");
+        std::ifstream leakFile("data/leaked_hashes.txt");
+        if (leakFile.is_open()) {
+            std::string line;
+            while (std::getline(leakFile, line)) {
+                if (!line.empty()) {
+                    if (line.back() == '\r') line.pop_back();
+                    leakDB.insert(line);
+                }
+            }
+            leakFile.close();
+        } else {
+            leakDB.insert(HashUtils::generateSHA256("123456"));
+            leakDB.insert(HashUtils::generateSHA256("password"));
+        }
 
         bool isWeak = weakPasswords.search(password);
         std::string hash = HashUtils::generateSHA256(password);
         
-        // Mock leak check (using raw string since mock DB was seeded with raw strings)
-        bool isLeaked = leakDB.isLeaked(password); 
+        // Check leak using the hash
+        bool isLeaked = leakDB.isLeaked(hash);
         
         double entropy = PasswordEngine::calculateEntropy(password);
         double crackTime = PasswordEngine::calculateCrackTimeSeconds(password);
