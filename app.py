@@ -37,7 +37,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("🛡️ Memory-Based Password Leak Detection System")
-st.markdown("### **Developed by HAMZA ALI**")
 st.markdown("Test your password strength against our custom C++ Data Structures Backend and generate a personalized AI Security Report.")
 
 with st.expander("ℹ️ How This System Works (C++ Data Structures)"):
@@ -205,3 +204,13 @@ if analyze_btn or report_btn:
                         
         except Exception as e:
             st.error(f"Failed to execute C++ backend. Error: {e}")
+
+# Footer Details
+st.markdown("---")
+st.markdown("""
+<div style="text-align: center; color: #888; padding-top: 20px;">
+    <b>DSA PROJECT 4TH SEMESTER</b><br>
+    COMSATS UNIVERSITY ISLAMABAD, WAH CAMPUS<br>
+    <i>TEAM LEAD: HAMZA ALI | MEMBERS: ADNAN SHAH AND FARUKH MUMTAZ</i>
+</div>
+""", unsafe_allow_html=True)
