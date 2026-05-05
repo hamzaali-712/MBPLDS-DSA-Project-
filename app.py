@@ -196,7 +196,7 @@ if analyze_btn or report_btn:
                             
                             response = client.chat.completions.create(
                                 messages=[{"role": "user", "content": prompt}],
-                                model="llama3-8b-8192"
+                                model="llama-3.1-8b-instant"
                             )
                             st.success("Report Generated Successfully!")
                             st.write(response.choices[0].message.content)
