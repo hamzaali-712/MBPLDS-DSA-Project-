@@ -97,9 +97,8 @@ This project is optimized for deployment on the Streamlit Community Cloud.
 
 This project was developed collaboratively by students of **COMSATS University Islamabad, Wah Campus**:
 
-- **Hamza Ali (Team Lead):** AI Integration, Deployment, and Remaining Backend.
-- **Adnan Shah:** UI/UX Design and Module Testing.
-- **Farukh Mumtaz:** Hashing ,Documentation, System Testing, and Bug Fixing.
+- **Hamza Ali (Team Lead):** AI Integration, Deployment,UI/UX Design and Remaining Backend.
+- **Farukh Mumtaz:** Hashing ,Documentation, System Testing,Module Testing and Bug Fixing.
 
 ---
 <div align="center">
