@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}/MAIN.cpp",
+                "${workspaceFolder}/USER/User.cpp",
+                "${workspaceFolder}/PASSWORD/Password.cpp",
+                "${workspaceFolder}/UserManager/UserManager.cpp",
+                "-I", "${workspaceFolder}/USER",
+                "-I", "${workspaceFolder}/PASSWORD",
+                "-I", "${workspaceFolder}/UserManager",
+                "-o",
+                "${workspaceFolder}/MBPLDS.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task generated for MBPLDS Project"
+        }
+    ]
+}
